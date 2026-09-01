@@ -9,7 +9,7 @@ namespace Assignment.StudentSolution.LCT04
         /// name เป็น public จึงสามารถเข้าถึงได้จากภายนอก class
         /// รวมถึงภายใน method ของ class ที่สืบทอด Animal ไปด้วย
         /// </summary>
-        string name = "";
+        public string name = "";
 
         /// <summary>
         /// specie เป็น protected จึงสามารถเข้าถึงได้จากภายใน class ที่สืบทอด Animal
@@ -17,12 +17,12 @@ namespace Assignment.StudentSolution.LCT04
         /// เช่นผ่าน constructor ของ Dog เพื่อกำหนดค่า specie = "Dog"
         /// ไม่สามารถกำหนดค่าให้กับ specie จากภายนอก class ได้
         /// </summary>
-        string specie = "";
+        protected string specie = "";//ต้องเชื่อมเอาไว้(:Animal)
 
         /// <summary>
         /// health เป็น private จึงสามารถเข้าถึงได้เฉพาะภายใน class นี้ (Animal) เท่านั้น
         /// </summary>
-        int health = 10;
+        protected int health = 10;
 
         public void Feed(int food)
         {
@@ -55,18 +55,19 @@ namespace Assignment.StudentSolution.LCT04
             // 1. กำหนด specie = "Dog"
             // สามารถเข้าถึง specie ได้เนื่องจาก specie เป็น protected
             // ทำให้สามารถเข้าถึงได้จาก class ที่สืบทอด Animal ได้
-
+            specie = "Dog";
             // 2. กำนด this.name = name ที่รับเป็น parameter จาก constructor
             // สามารถเข้าถึง name ได้เนื่องจาก name เป็น public 
             // ทำให้สามารถเข้าถึงได้จาก class นี้ได้ เนื่องจาก class นี้สืบทอด Animal
-
+            this.name = name;
             // ไม่สามารถเข้าถึง health ได้เนื่องจาก health เป็น private
             // ทำให้ใช้งานได้แค่ใน class ที่ประกาศ health ไว้เท่านั้น ซึ่งก็คือ class Animal
             // this.health = 100; ==> COMPILE ERROR
+            health = 10;
         }
     }
 
-    public class LCT04AccessModifier
+    public class LCT04AccessModifier 
     {
         public void Start()
         {
@@ -77,7 +78,7 @@ namespace Assignment.StudentSolution.LCT04
             // ...
 
             // student code ends HERE
-
+            dog.name = "Big";
             // NOTE #1
             // จะไม่สามารถเข้าถึง specie ได้เนื่องจาก specie เป็น protected
             // จึงเรียกใช้งานได้เฉพาะภายใน class เท่านั้น
